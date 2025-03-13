@@ -1,0 +1,25 @@
+models:
+  Post:
+    id: id
+    title: string:255
+    content: text
+    published_at: timestamp nullable
+    relationships:
+      hasMany: Comment
+
+controllers:
+  Post:
+    resource: api
+
+factories:
+  Post
+
+seeders:
+  Post
+
+tests:
+  Post:
+    - create
+    - read
+    - update
+    - delete
