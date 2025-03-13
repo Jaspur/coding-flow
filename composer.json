@@ -16,6 +16,7 @@
         }
     },
     "description": "Laravel package voor geautomatiseerde repositories, services, DTO's en tests",
+    "license": "MIT",
     "minimum-stability": "stable",
     "name": "jaspur/coding-flow",
     "prefer-stable": true,
