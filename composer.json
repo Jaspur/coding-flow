@@ -31,6 +31,5 @@
         "phpstan/phpstan": "^2.1",
         "rector/rector": "^2.0"
     },
-    "type": "library",
-    "version": "1.0.0"
+    "type": "library"
 }
