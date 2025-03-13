@@ -27,7 +27,8 @@ class CodingFlowServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__.'/../../config/codingflow.php' => base_path('config/codingflow.php'),
-        ], 'codingflow-config');
+            __DIR__.'/../resources/lang' => base_path('config/codingflow.php'),
+        ], 'config');
+
     }
 }
