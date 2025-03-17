@@ -44,7 +44,7 @@ class ServiceLayerGenerator
             ) {}
 
             /**
-             * @return Collection<int, {$model}>
+             * @return Collection<array-key, {$model}>
              */
             public function getAll(): Collection
             {

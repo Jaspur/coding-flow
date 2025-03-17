@@ -39,7 +39,7 @@ class RepositoryGenerator
         class {$model}Repository
         {
             /**
-             * @return Collection<int, {$model}>
+             * @return Collection<array-key, {$model}>
              */
             public function all(): array
             {
