@@ -12,14 +12,16 @@ class ServiceLayerGenerator
     {
         $servicePath = app_path("Services/{$model}Service.php");
 
-        File::ensureDirectoryExists(dirname($servicePath));
-
-        if (File::exists($servicePath)) {
+        if (! config('codingflow.generators.services', true)) {
             return;
         }
 
-        $stub = $this->getStub($model);
-        File::put($servicePath, $stub);
+        if (File::exists($servicePath) && ! config('codingflow.overwrite_existing_files', false)) {
+            return;
+        }
+
+        File::ensureDirectoryExists(dirname($servicePath));
+        File::put($servicePath, $this->getStub($model));
     }
 
     private function getStub(string $model): string
@@ -27,37 +29,61 @@ class ServiceLayerGenerator
         return <<<PHP
         <?php
 
+        declare(strict_types=1);
+
         namespace App\Services;
 
         use App\Repositories\\{$model}Repository;
+        use App\Models\\{$model};
+        use Illuminate\Database\Eloquent\Collection;
 
         class {$model}Service
         {
             public function __construct(
-                private {$model}Repository \$repository
+                private readonly {$model}Repository \$repository
             ) {}
 
-            public function getAll()
+            /**
+             * @return Collection<int, {$model}>
+             */
+            public function getAll(): Collection
             {
                 return \$this->repository->all();
             }
 
-            public function getById(string \$id)
+            /**
+             * @param non-empty-string \$id
+             * @return {$model}
+             */
+            public function getById(string \$id): {$model}
             {
                 return \$this->repository->find(\$id);
             }
 
-            public function create(array \$data)
+            /**
+             * @param array \$data
+             * @return {$model}
+             */
+            public function create(array \$data): {$model}
             {
                 return \$this->repository->create(\$data);
             }
 
-            public function update(string \$id, array \$data)
+            /**
+             * @param non-empty-string \$id
+             * @param array \$data
+             * @return {$model}
+             */
+            public function update(string \$id, array \$data): {$model}
             {
                 return \$this->repository->update(\$id, \$data);
             }
 
-            public function delete(string \$id)
+            /**
+             * @param non-empty-string \$id
+             * @return bool
+             */
+            public function delete(string \$id): bool
             {
                 return \$this->repository->delete(\$id);
             }

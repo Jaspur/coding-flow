@@ -12,14 +12,16 @@ class RepositoryGenerator
     {
         $repositoryPath = app_path("Repositories/{$model}Repository.php");
 
-        File::ensureDirectoryExists(dirname($repositoryPath));
-
-        if (File::exists($repositoryPath)) {
+        if (! config('codingflow.generators.repositories', true)) {
             return;
         }
 
-        $stub = $this->getStub($model);
-        File::put($repositoryPath, $stub);
+        if (File::exists($repositoryPath) && ! config('codingflow.overwrite_existing_files', false)) {
+            return;
+        }
+
+        File::ensureDirectoryExists(dirname($repositoryPath));
+        File::put($repositoryPath, $this->getStub($model));
     }
 
     private function getStub(string $model): string
@@ -27,37 +29,59 @@ class RepositoryGenerator
         return <<<PHP
         <?php
 
+        declare(strict_types=1);
+
         namespace App\Repositories;
 
         use App\Models\\{$model};
 
         class {$model}Repository
         {
-            public function all()
+            /**
+             * @return list<{$model}>
+             */
+            public function all(): array
             {
-                return {$model}::all();
+                return {$model}::all()->toArray();
             }
 
-            public function find(string \$id): ?{$model}
+            /**
+             * @param non-empty-string \$id
+             * @return {$model}
+             */
+            public function find(string \$id): {$model}
             {
                 return {$model}::findOrFail(\$id);
             }
 
+            /**
+             * @param array \$data
+             * @return {$model}
+             */
             public function create(array \$data): {$model}
             {
                 return {$model}::create(\$data);
             }
 
-            public function update(string \$id, array \$data): bool
+            /**
+             * @param non-empty-string \$id
+             * @param array \$data
+             * @return {$model}
+             */
+            public function update(string \$id, array \$data): {$model}
             {
                 \$record = \$this->find(\$id);
-                return \$record->update(\$data);
+                \$record->update(\$data);
+                return \$record;
             }
 
+            /**
+             * @param non-empty-string \$id
+             * @return bool
+             */
             public function delete(string \$id): bool
             {
-                \$record = \$this->find(\$id);
-                return \$record->delete();
+                return \$this->find(\$id)->delete();
             }
         }
         PHP;

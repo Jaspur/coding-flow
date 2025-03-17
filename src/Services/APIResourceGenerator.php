@@ -31,10 +31,12 @@ class APIResourceGenerator
 
         use Illuminate\Http\Request;
         use Illuminate\Http\Resources\Json\JsonResource;
+        use Illuminate\Contracts\Support\Arrayable;
+        use JsonSerializable;
 
         class {$model}Resource extends JsonResource
         {
-            public function toArray(Request \$request): array
+            public function toArray(Request \$request): array|Arrayable|JsonSerializable
             {
                 return parent::toArray(\$request);
             }

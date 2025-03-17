@@ -35,6 +35,7 @@ php artisan codingflow:generate-services
 php artisan codingflow:generate-dtos
 php artisan codingflow:generate-api-resources
 php artisan codingflow:generate-feature-tests
+php artisan codingflow:generate-controllers
 php artisan codingflow:generate-observers
 ```
 
@@ -64,6 +65,7 @@ return [
         'api_resources'  => true,
         'feature_tests'  => true,
         'observers'      => true,
+        'cibtrikkers'      => true,
     ],
 
     'paths' => [

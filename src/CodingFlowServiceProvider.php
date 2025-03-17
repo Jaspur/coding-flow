@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Jaspur\CodingFlow;
 
-use Blueprint\Blueprint;
 use Jaspur\CodingFlow\Console\GenerateAll;
 use Jaspur\CodingFlow\Console\GenerateAPIResources;
 use Jaspur\CodingFlow\Console\GenerateControllers;
@@ -36,15 +35,8 @@ class CodingFlowServiceProvider extends PackageServiceProvider
             ])
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command
-                    // ->publishConfigFile()
                     ->copyAndRegisterServiceProviderInApp()
                     ->askToStarRepoOnGitHub('Jaspur/coding-flow');
             });
-
-        // $this->app->extend(Blueprint::class, function (Blueprint $blueprint): Blueprint {
-        //     $blueprint->registerGenerator(new GenerateAll);
-
-        //     return $blueprint;
-        // });
     }
 }

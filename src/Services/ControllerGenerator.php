@@ -46,7 +46,9 @@ class ControllerGenerator
             ) {}
 
             /**
-             * Haal alle records op
+             * Haal alle records op.
+             *
+             * @return {$model}Collection
              */
             public function index(): {$model}Collection
             {
@@ -54,7 +56,10 @@ class ControllerGenerator
             }
 
             /**
-             * Haal een specifiek record op
+             * Haal een specifiek record op.
+             *
+             * @param non-empty-string \$id
+             * @return {$model}Resource
              */
             public function show(string \$id): {$model}Resource
             {
@@ -62,7 +67,10 @@ class ControllerGenerator
             }
 
             /**
-             * Maak een nieuw record aan
+             * Maak een nieuw record aan.
+             *
+             * @param {$model}Request \$request
+             * @return {$model}Resource
              */
             public function store({$model}Request \$request): {$model}Resource
             {
@@ -72,7 +80,11 @@ class ControllerGenerator
             }
 
             /**
-             * Werk een bestaand record bij
+             * Werk een bestaand record bij.
+             *
+             * @param {$model}Request \$request
+             * @param non-empty-string \$id
+             * @return {$model}Resource
              */
             public function update({$model}Request \$request, string \$id): {$model}Resource
             {
@@ -82,7 +94,10 @@ class ControllerGenerator
             }
 
             /**
-             * Verwijder een record
+             * Verwijder een record.
+             *
+             * @param non-empty-string \$id
+             * @return Response
              */
             public function destroy(string \$id): Response
             {
