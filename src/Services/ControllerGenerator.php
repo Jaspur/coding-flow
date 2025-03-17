@@ -47,7 +47,7 @@ class ControllerGenerator
             ) {}
 
             /**
-             * Retrieve a list of {$model}s with optional pagination.
+             * Retrieve a list of {$model}s.
              *
              * This method retrieves all the {$model}s in the database.
              *
