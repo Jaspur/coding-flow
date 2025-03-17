@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Jaspur\CodingFlow\Services;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class FeatureTestGenerator
 {
@@ -24,6 +25,8 @@ class FeatureTestGenerator
 
     private function getStub(string $model): string
     {
+        $_model = Str::lower($model);
+
         return <<<PHP
         <?php
 
@@ -31,8 +34,8 @@ class FeatureTestGenerator
         use function Pest\Laravel\getJson;
         use function Pest\Laravel\postJson;
 
-        test('POST /api/{$model}s creates a new {$model}', function () {
-            \$response = postJson('/api/{$model}s', [
+        test('POST /api/{$_model}s creates a new {$model}', function () {
+            \$response = postJson('/api/{$_model}s', [
                 'title' => 'Test Title',
                 'content' => 'Test content',
             ]);
@@ -43,10 +46,10 @@ class FeatureTestGenerator
                 ]);
         });
 
-        test('GET /api/{$model}s/{id} returns {$model} data', function () {
-            \$record = {$model}::factory()->create();
+        test('GET /api/{$_model}s/{id} returns {$model} data', function () {
+            \$record = {$_model}::factory()->create();
 
-            \$response = getJson("/api/{$model}s/{\$record->id}");
+            \$response = getJson("/api/{$_model}s/{\$record->id}");
 
             \$response->assertStatus(200)
                 ->assertJson([
