@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Jaspur\CodingFlow\Providers;
+namespace Jaspur\CodingFlow;
 
 use Blueprint\Blueprint;
 use Jaspur\CodingFlow\Console\GenerateAll;

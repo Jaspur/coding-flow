@@ -19,7 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Jaspur\\CodingFlow\\Providers\\CodingFlowServiceProvider"
+                "Jaspur\\CodingFlow\\CodingFlowServiceProvider"
             ]
         }
     },
