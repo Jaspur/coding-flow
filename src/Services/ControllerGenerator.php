@@ -47,7 +47,7 @@ class ControllerGenerator
             ) {}
 
             /**
-             * Haal alle records op.
+             * All {$model}s
              *
              * @return {$model}Collection
              */
@@ -57,7 +57,7 @@ class ControllerGenerator
             }
 
             /**
-             * Haal een specifiek record op.
+             * Get {$model}:id
              *
              * @param non-empty-string \$id
              * @return {$model}Resource
@@ -68,7 +68,7 @@ class ControllerGenerator
             }
 
             /**
-             * Maak een nieuw record aan.
+             * Store {$model}
              *
              * @param {$model}StoreRequest \$request
              * @return {$model}Resource
@@ -81,7 +81,7 @@ class ControllerGenerator
             }
 
             /**
-             * Werk een bestaand record bij.
+             * Update {$model}:id
              *
              * @param {$model}UpdateRequest \$request
              * @param non-empty-string \$id
@@ -95,7 +95,7 @@ class ControllerGenerator
             }
 
             /**
-             * Verwijder een record.
+             * Delete {$model}:id
              *
              * @param non-empty-string \$id
              * @return Response
