@@ -42,7 +42,7 @@ class ServiceLayerGenerator
                 return \$this->repository->all();
             }
 
-            public function getById(int \$id)
+            public function getById(string \$id)
             {
                 return \$this->repository->find(\$id);
             }
@@ -52,12 +52,12 @@ class ServiceLayerGenerator
                 return \$this->repository->create(\$data);
             }
 
-            public function update(int \$id, array \$data)
+            public function update(string \$id, array \$data)
             {
                 return \$this->repository->update(\$id, \$data);
             }
 
-            public function delete(int \$id)
+            public function delete(string \$id)
             {
                 return \$this->repository->delete(\$id);
             }
