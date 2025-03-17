@@ -30,6 +30,7 @@ class CodingFlowServiceProvider extends PackageServiceProvider
                 GenerateAPIResources::class,
                 GenerateFeatureTests::class,
                 GenerateObservers::class,
+                GenerateAll::class,
             ])
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command

@@ -11,7 +11,7 @@ return [
     */
 
     // ✨ Overschrijf bestaande bestanden automatisch?
-    'overwrite_existing_files' => false,
+    'overwrite_existing_files' => false, // @todo implement
 
     // 🏗️ Welke onderdelen moeten automatisch gegenereerd worden?
     'generators' => [
@@ -23,20 +23,10 @@ return [
         'observers' => true,
     ],
 
-    // 🗂️ Bestandenstructuur
-    'paths' => [
-        'repositories' => app_path('Repositories'),
-        'services' => app_path('Services'),
-        'dtos' => app_path('DTOs'),
-        'api_resources' => app_path('Http/Resources'),
-        'feature_tests' => base_path('tests/Feature'),
-        'observers' => app_path('Observers'),
-    ],
-
     // 🛠 Blueprint monitoring
-    'watch_blueprint' => true,
+    'watch_blueprint' => true, // @todo implement
 
-    // 🛡️ Code kwaliteit checks
+    // 🛡️ Code kwaliteit checks // @todo implement
     'code_quality' => [
         'phpstan' => true,
         'pint' => true,
