@@ -24,7 +24,7 @@ php artisan vendor:publish --tag=codingflow-config
 Je kunt de complete projectstructuur genereren met één command:  
 
 ```sh
-php artisan codingflow:generate-structure
+php artisan codingflow:generate-all
 ```
 
 Individuele componenten genereren:
@@ -42,7 +42,7 @@ Wil je dat **CodingFlow** automatisch bijhoudt welke modellen en controllers geg
 Dat kan via Laravel Blueprint! Zorg dat je een `blueprint.yaml` hebt en voer uit:  
 
 ```sh
-php artisan blueprint:build && php artisan codingflow:generate
+php artisan blueprint:build && php artisan codingflow:generate-all
 ```
 
 ---
