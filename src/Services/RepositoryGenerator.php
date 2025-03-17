@@ -12,6 +12,8 @@ class RepositoryGenerator
     {
         $repositoryPath = app_path("Repositories/{$model}Repository.php");
 
+        File::ensureDirectoryExists(dirname($repositoryPath));
+
         if (File::exists($repositoryPath)) {
             return;
         }

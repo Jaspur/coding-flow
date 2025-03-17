@@ -12,6 +12,8 @@ class APIResourceGenerator
     {
         $resourcePath = app_path("Http/Resources/{$model}Resource.php");
 
+        File::ensureDirectoryExists(dirname($resourcePath));
+
         if (File::exists($resourcePath)) {
             return;
         }

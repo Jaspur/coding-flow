@@ -17,6 +17,8 @@ class DTOGenerator
     {
         $dtoPath = app_path("DTOs/{$model}DTO.php");
 
+        File::ensureDirectoryExists(dirname($dtoPath));
+
         if (File::exists($dtoPath)) {
             return;
         }

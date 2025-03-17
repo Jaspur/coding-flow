@@ -12,6 +12,8 @@ class ObserverGenerator
     {
         $observerPath = app_path("Observers/{$model}Observer.php");
 
+        File::ensureDirectoryExists(dirname($observerPath));
+
         if (File::exists($observerPath)) {
             return;
         }

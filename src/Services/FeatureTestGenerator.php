@@ -12,6 +12,8 @@ class FeatureTestGenerator
     {
         $testPath = base_path("tests/Feature/{$model}Test.php");
 
+        File::ensureDirectoryExists(dirname($testPath));
+
         if (File::exists($testPath)) {
             return;
         }

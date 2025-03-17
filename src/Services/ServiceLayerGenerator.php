@@ -12,6 +12,8 @@ class ServiceLayerGenerator
     {
         $servicePath = app_path("Services/{$model}Service.php");
 
+        File::ensureDirectoryExists(dirname($servicePath));
+
         if (File::exists($servicePath)) {
             return;
         }
