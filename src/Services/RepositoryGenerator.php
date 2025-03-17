@@ -41,7 +41,7 @@ class RepositoryGenerator
             /**
              * @return Collection<array-key, {$model}>
              */
-            public function all(): Collection<array-key, {$model}>
+            public function all(): Collection
             {
                 return {$model}::all();
             }
