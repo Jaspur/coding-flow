@@ -72,7 +72,7 @@ class ControllerGenerator
              * @param {$model}Request \$request
              * @return {$model}Resource
              */
-            public function store({$model}Request \$request): {$model}Resource
+            public function store({$model}StoreRequest \$request): {$model}Resource
             {
                 return new {$model}Resource(
                     \$this->service->create(\$request->validated())
@@ -86,7 +86,7 @@ class ControllerGenerator
              * @param non-empty-string \$id
              * @return {$model}Resource
              */
-            public function update({$model}Request \$request, string \$id): {$model}Resource
+            public function update({$model}UpdateRequest \$request, string \$id): {$model}Resource
             {
                 return new {$model}Resource(
                     \$this->service->update(\$id, \$request->validated())
