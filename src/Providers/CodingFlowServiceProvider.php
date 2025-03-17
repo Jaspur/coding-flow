@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Jaspur\CodingFlow\Providers;
 
+use Blueprint\Blueprint;
+use Jaspur\CodingFlow\Console\GenerateAll;
 use Jaspur\CodingFlow\Console\GenerateAPIResources;
 use Jaspur\CodingFlow\Console\GenerateDTOs;
 use Jaspur\CodingFlow\Console\GenerateFeatureTests;
@@ -36,5 +38,10 @@ class CodingFlowServiceProvider extends PackageServiceProvider
                     ->askToStarRepoOnGitHub('Jaspur/coding-flow');
             });
 
+        // $this->app->extend(Blueprint::class, function (Blueprint $blueprint): Blueprint {
+        //     $blueprint->registerGenerator(new GenerateAll);
+
+        //     return $blueprint;
+        // });
     }
 }

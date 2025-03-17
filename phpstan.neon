@@ -14,3 +14,6 @@ parameters:
     ignoreErrors:
         - '#Function app_path not found#'
         - '#Function base_path not found#'
+    excludePaths:
+        analyseAndScan:
+            - ./src/Console/GenerateAll.php

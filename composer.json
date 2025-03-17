@@ -30,7 +30,8 @@
         "php": "^8.4",
         "phpstan/phpstan": "^2.1",
         "rector/rector": "^2.0",
-        "spatie/laravel-package-tools": "^1.19"
+        "spatie/laravel-package-tools": "^1.19",
+        "laravel-shift/blueprint": "^2.11"
     },
     "type": "library",
     "require-dev": {
