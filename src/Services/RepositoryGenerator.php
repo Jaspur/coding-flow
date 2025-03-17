@@ -34,15 +34,16 @@ class RepositoryGenerator
         namespace App\Repositories;
 
         use App\Models\\{$model};
+        use Illuminate\Database\Eloquent\Collection;
 
         class {$model}Repository
         {
             /**
-             * @return list<{$model}>
+             * @return Collection<int, {$model}>
              */
             public function all(): array
             {
-                return {$model}::all()->toArray();
+                return {$model}::all();
             }
 
             /**
