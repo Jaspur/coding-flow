@@ -40,7 +40,7 @@ class APIResourceGenerator
             {
                 return [
                     'id' => \$this->id,
-                    'todo' => self::class
+                    'todo' => '{$model}Resource'
                 ];
             }
         }
