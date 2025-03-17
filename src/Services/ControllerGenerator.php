@@ -70,7 +70,7 @@ class ControllerGenerator
             /**
              * Maak een nieuw record aan.
              *
-             * @param {$model}Request \$request
+             * @param {$model}StoreRequest \$request
              * @return {$model}Resource
              */
             public function store({$model}StoreRequest \$request): {$model}Resource
@@ -83,7 +83,7 @@ class ControllerGenerator
             /**
              * Werk een bestaand record bij.
              *
-             * @param {$model}Request \$request
+             * @param {$model}UpdateRequest \$request
              * @param non-empty-string \$id
              * @return {$model}Resource
              */
