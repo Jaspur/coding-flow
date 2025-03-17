@@ -77,9 +77,9 @@ class RepositoryGenerator
 
             /**
              * @param non-empty-string \$id
-             * @return bool
+             * @return bool|int
              */
-            public function delete(string \$id): bool
+            public function delete(string \$id): bool|int
             {
                 return \$this->find(\$id)->delete();
             }

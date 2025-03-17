@@ -81,9 +81,9 @@ class ServiceLayerGenerator
 
             /**
              * @param non-empty-string \$id
-             * @return bool
+             * @return bool|int
              */
-            public function delete(string \$id): bool
+            public function delete(string \$id): bool|int
             {
                 return \$this->repository->delete(\$id);
             }
