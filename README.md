@@ -115,9 +115,7 @@ Voer deze checks handmatig uit:
 ---
 
 ## 🎯 **Roadmap & Toekomstige Features**
-✅ Ondersteuning voor Laravel 10 & 11  
-✅ Automatische model-detectie via Eloquent  
-⏳ Integratie met Laravel Nova voor resource controllers  
+⏳ Configuratie toepassen
 ⏳ Extra validaties in DTO's  
 
 🔥 **Wil je bijdragen? Fork de repo en stuur een PR!**  
