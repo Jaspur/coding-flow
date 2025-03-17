@@ -71,7 +71,7 @@ class RepositoryGenerator
              */
             public function update(string \$id, array \$data): {$model}
             {
-                \$record = \$this->findOrFail(\$id);
+                \$record = \$this->find(\$id);
                 \$record->update(\$data);
                 return \$record;
             }
@@ -82,7 +82,7 @@ class RepositoryGenerator
              */
             public function delete(string \$id): bool|int
             {
-                return \$this->findOrFail(\$id)->delete();
+                return \$this->find(\$id)->delete();
             }
         }
         PHP;
