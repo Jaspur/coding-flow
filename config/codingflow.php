@@ -17,7 +17,7 @@ return [
     'generators' => [
         'repositories' => true,
         'services' => true,
-        'dtos' => true,
+        'dtos' => false, // @todo implement
         'api_resources' => true,
         'feature_tests' => true,
         'observers' => true,

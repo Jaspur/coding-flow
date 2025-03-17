@@ -26,7 +26,7 @@ class CodingFlowServiceProvider extends PackageServiceProvider
             ->hasCommands([
                 GenerateRepositories::class,
                 GenerateServices::class,
-                GenerateDTOs::class,
+                GenerateDTOs::class, // @todo implement
                 GenerateAPIResources::class,
                 GenerateFeatureTests::class,
                 GenerateObservers::class,
