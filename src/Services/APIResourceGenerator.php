@@ -36,9 +36,12 @@ class APIResourceGenerator
 
         class {$model}Resource extends JsonResource
         {
-            public function toArray(Request \$request): array|Arrayable|JsonSerializable
+            public function toArray(Request \$request): array
             {
-                return parent::toArray(\$request);
+                return [
+                    'id' => \$this->id,
+                    'todo' => self::class
+                ];
             }
         }
         PHP;
