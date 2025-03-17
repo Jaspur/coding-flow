@@ -22,7 +22,7 @@ class GenerateAll extends Command
             'api_resources' => 'codingflow:generate-api-resources',
             'feature_tests' => 'codingflow:generate-feature-tests',
             'observers' => 'codingflow:generate-observers',
-            'structure' => 'codingflow:generate-structure',
+            'controllers' => 'codingflow:generate-controllers',
         ];
 
         foreach ($commands as $key => $command) {

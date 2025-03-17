@@ -7,6 +7,7 @@ namespace Jaspur\CodingFlow;
 use Blueprint\Blueprint;
 use Jaspur\CodingFlow\Console\GenerateAll;
 use Jaspur\CodingFlow\Console\GenerateAPIResources;
+use Jaspur\CodingFlow\Console\GenerateControllers;
 use Jaspur\CodingFlow\Console\GenerateDTOs;
 use Jaspur\CodingFlow\Console\GenerateFeatureTests;
 use Jaspur\CodingFlow\Console\GenerateObservers;
@@ -30,6 +31,7 @@ class CodingFlowServiceProvider extends PackageServiceProvider
                 GenerateAPIResources::class,
                 GenerateFeatureTests::class,
                 GenerateObservers::class,
+                GenerateControllers::class,
                 GenerateAll::class,
             ])
             ->hasInstallCommand(function (InstallCommand $command): void {
