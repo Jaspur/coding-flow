@@ -11,20 +11,30 @@ class GenerateAll extends Command
 {
     protected $signature = 'codingflow:generate-all';
 
-    protected $description = 'Genereert alles volledig.';
+    protected $description = 'Voert alle CodingFlow generatie commands uit op basis van de configuratie.';
 
     public function handle(): void
     {
-        foreach ([
-            'codingflow:generate-repositories',
-            'codingflow:generate-services',
-            'codingflow:generate-dtos',
-            'codingflow:generate-api-resources',
-            'codingflow:generate-feature-tests',
-            'codingflow:generate-observers',
-            'codingflow:generate-structure',
-        ] as $command) {
-            Artisan::call($command);
+        $commands = [
+            'repositories' => 'codingflow:generate-repositories',
+            'services' => 'codingflow:generate-services',
+            'dtos' => 'codingflow:generate-dtos',
+            'api_resources' => 'codingflow:generate-api-resources',
+            'feature_tests' => 'codingflow:generate-feature-tests',
+            'observers' => 'codingflow:generate-observers',
+            'structure' => 'codingflow:generate-structure',
+        ];
+
+        foreach ($commands as $key => $command) {
+            if (config("codingflow.generators.$key", false)) {
+                $this->info("🚀 Uitvoeren: $command");
+                Artisan::call($command);
+                $this->line(Artisan::output());
+            } else {
+                $this->warn("⏩ $command overgeslagen (uitgeschakeld in configuratie)");
+            }
         }
+
+        $this->info('✅ Alle actieve CodingFlow commands succesvol uitgevoerd!');
     }
 }
