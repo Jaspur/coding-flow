@@ -1,0 +1,16 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+
+parameters:
+    level: 9
+    paths:
+        - src/
+        - tests/
+    checkExplicitMixed: true
+    checkUninitializedProperties: true
+    reportUnmatchedIgnoredErrors: true
+    inferPrivatePropertyTypeFromConstructor: true
+    ignoreErrors:
+        - '#Function app_path not found#'
+        - '#Function base_path not found#'

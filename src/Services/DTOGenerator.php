@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\File;
 
 class DTOGenerator
 {
+    /**
+     * Genereer een DTO voor een model.
+     *
+     * @param  array<string, string>  $attributes
+     */
     public function generate(string $model, array $attributes): void
     {
         $dtoPath = app_path("DTOs/{$model}DTO.php");
@@ -20,9 +25,14 @@ class DTOGenerator
         File::put($dtoPath, $stub);
     }
 
+    /**
+     * Verkrijg de stub voor een model.
+     *
+     * @param  array<string, string>  $attributes
+     */
     private function getStub(string $model, array $attributes): string
     {
-        $properties = array_map(fn ($type, $name) => "    public readonly {$type} \${$name};", $attributes, array_keys($attributes));
+        $properties = array_map(fn ($type, $name): string => "    public readonly {$type} \${$name};", $attributes, array_keys($attributes));
         $propertiesCode = implode("\n", $properties);
 
         return <<<PHP

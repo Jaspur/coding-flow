@@ -4,31 +4,37 @@ declare(strict_types=1);
 
 namespace Jaspur\CodingFlow\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Jaspur\CodingFlow\Console\GenerateAPIResources;
+use Jaspur\CodingFlow\Console\GenerateDTOs;
+use Jaspur\CodingFlow\Console\GenerateFeatureTests;
+use Jaspur\CodingFlow\Console\GenerateObservers;
+use Jaspur\CodingFlow\Console\GenerateRepositories;
+use Jaspur\CodingFlow\Console\GenerateServices;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class CodingFlowServiceProvider extends ServiceProvider
+class CodingFlowServiceProvider extends PackageServiceProvider
 {
-    public function register(): void
+    public function configurePackage(Package $package): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../../config/codingflow.php', 'codingflow');
-    }
-
-    public function boot(): void
-    {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                \Jaspur\CodingFlow\Console\GenerateRepositories::class,
-                \Jaspur\CodingFlow\Console\GenerateServices::class,
-                \Jaspur\CodingFlow\Console\GenerateDTOs::class,
-                \Jaspur\CodingFlow\Console\GenerateAPIResources::class,
-                \Jaspur\CodingFlow\Console\GenerateFeatureTests::class,
-                \Jaspur\CodingFlow\Console\GenerateObservers::class,
-            ]);
-        }
-
-        $this->publishes([
-            __DIR__.'/../resources/lang' => base_path('config/codingflow.php'),
-        ], 'config');
+        $package
+            ->name('codingflow')
+            ->hasConfigFile()
+            ->hasCommands([
+                GenerateRepositories::class,
+                GenerateServices::class,
+                GenerateDTOs::class,
+                GenerateAPIResources::class,
+                GenerateFeatureTests::class,
+                GenerateObservers::class,
+            ])
+            ->hasInstallCommand(function (InstallCommand $command): void {
+                $command
+                    ->publishConfigFile()
+                    ->copyAndRegisterServiceProviderInApp()
+                    ->askToStarRepoOnGitHub('Jaspur/coding-flow');
+            });
 
     }
 }

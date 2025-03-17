@@ -109,9 +109,7 @@ CodingFlow ondersteunt automatisch:
 Voer deze checks handmatig uit:
 
 ```sh
-vendor/bin/phpstan analyse
-vendor/bin/pint
-vendor/bin/rector process
+./prerelease.sh
 ```
 
 ---

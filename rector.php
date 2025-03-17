@@ -11,7 +11,7 @@ return static function (RectorConfig $rectorConfig): void {
     // ✅ Bepaal de paden voor de codebase
     $rectorConfig->paths([
         __DIR__.'/src',
-        __DIR__.'/tests',
+        // __DIR__.'/tests',
     ]);
 
     // ✅ Minimale PHP-versie (8.4)

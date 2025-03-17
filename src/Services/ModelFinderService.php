@@ -24,7 +24,7 @@ class ModelFinderService
 
         return collect(File::files($modelsPath))
             ->map(fn ($file) => 'App\\Models\\'.pathinfo($file->getFilename(), PATHINFO_FILENAME))
-            ->filter(fn ($class) => class_exists($class) && is_subclass_of($class, Model::class))
+            ->filter(fn ($class): bool => class_exists($class) && is_subclass_of($class, Model::class))
             ->map(fn ($class) => class_basename($class))
             ->values()
             ->all();
