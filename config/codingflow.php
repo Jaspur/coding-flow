@@ -11,7 +11,7 @@ return [
     */
 
     // ✨ Overschrijf bestaande bestanden automatisch?
-    'overwrite_existing_files' => false, // @todo implement
+    'overwrite_existing_files' => true, // @todo implement
 
     // 🏗️ Welke onderdelen moeten automatisch gegenereerd worden?
     'generators' => [
@@ -21,6 +21,7 @@ return [
         'api_resources' => true,  // @todo implement
         'feature_tests' => true,
         'observers' => true,
+        'controllers' => true,
     ],
 
     // 🛠 Blueprint monitoring
