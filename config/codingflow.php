@@ -18,7 +18,7 @@ return [
         'repositories' => true,
         'services' => true,
         'dtos' => false, // @todo implement
-        'api_resources' => true,
+        'api_resources' => true,  // @todo implement
         'feature_tests' => true,
         'observers' => true,
     ],

@@ -33,9 +33,19 @@ class ObserverGenerator
 
         class {$model}Observer
         {
+            public function creating({$model} \$model): void
+            {
+                // Logic for when a {$model} is being created
+            }
+
             public function created({$model} \$model): void
             {
                 // Logic for when a {$model} is created
+            }
+
+            public function updating({$model} \$model): void
+            {
+                // Logic for when a {$model} is being updated
             }
 
             public function updated({$model} \$model): void
@@ -46,6 +56,16 @@ class ObserverGenerator
             public function deleted({$model} \$model): void
             {
                 // Logic for when a {$model} is deleted
+            }
+
+            public function restored({$model} \$model): void
+            {
+                // Logic for when a {$model} is restored
+            }
+
+            public function forceDeleted({$model} \$model): void
+            {
+                // Logic for when a {$model} is force deleted
             }
         }
         PHP;

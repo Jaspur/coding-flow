@@ -34,7 +34,7 @@ class CodingFlowServiceProvider extends PackageServiceProvider
             ])
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command
-                    ->publishConfigFile()
+                    // ->publishConfigFile()
                     ->copyAndRegisterServiceProviderInApp()
                     ->askToStarRepoOnGitHub('Jaspur/coding-flow');
             });
