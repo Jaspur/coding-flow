@@ -33,12 +33,14 @@ class RepositoryGenerator
 
         namespace App\Repositories;
 
-        use App\Models\\{$model};
+        use App\Models\{$model};
         use Illuminate\Database\Eloquent\Collection;
 
         class {$model}Repository
         {
             /**
+             * Retrieve all {$model} records.
+             *
              * @return Collection<array-key, {$model}>
              */
             public function all(): Collection
@@ -47,15 +49,8 @@ class RepositoryGenerator
             }
 
             /**
-             * @param non-empty-string \$id
-             * @return {$model}
-             */
-            public function find(string \$id): {$model}
-            {
-                return {$model}::findOrFail(\$id);
-            }
-
-            /**
+             * Create a new {$model} record.
+             *
              * @param array \$data
              * @return {$model}
              */
@@ -65,24 +60,27 @@ class RepositoryGenerator
             }
 
             /**
-             * @param non-empty-string \$id
+             * Update the given {$model} record.
+             *
+             * @param {$model} \$model
              * @param array \$data
              * @return {$model}
              */
-            public function update(string \$id, array \$data): {$model}
+            public function update({$model} \$model, array \$data): {$model}
             {
-                \$record = \$this->find(\$id);
-                \$record->update(\$data);
-                return \$record;
+                \$model->update(\$data);
+                return \$model;
             }
 
             /**
-             * @param non-empty-string \$id
+             * Delete the given {$model} record.
+             *
+             * @param {$model} \$model
              * @return bool|int|null
              */
-            public function delete(string \$id): bool|int|null
+            public function delete({$model} \$model): bool|int|null
             {
-                return \$this->find(\$id)->delete();
+                return \$model->delete();
             }
         }
         PHP;
