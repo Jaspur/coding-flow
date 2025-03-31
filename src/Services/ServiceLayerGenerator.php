@@ -33,8 +33,8 @@ class ServiceLayerGenerator
 
         namespace App\Services;
 
-        use App\Repositories\\{$model}Repository;
-        use App\Models\\{$model};
+        use App\Repositories\{$model}Repository;
+        use App\Models\{$model};
         use Illuminate\Database\Eloquent\Collection;
 
         class {$model}Service
@@ -44,6 +44,8 @@ class ServiceLayerGenerator
             ) {}
 
             /**
+             * Get all {$model} records.
+             *
              * @return Collection<array-key, {$model}>
              */
             public function getAll(): Collection
@@ -52,15 +54,19 @@ class ServiceLayerGenerator
             }
 
             /**
-             * @param non-empty-string \$id
+             * Return the given model directly (already resolved).
+             *
+             * @param {$model} \$model
              * @return {$model}
              */
-            public function getById(string \$id): {$model}
+            public function getById({$model} \$model): {$model}
             {
-                return \$this->repository->find(\$id);
+                return \$model;
             }
 
             /**
+             * Create a new {$model} record.
+             *
              * @param array \$data
              * @return {$model}
              */
@@ -70,22 +76,26 @@ class ServiceLayerGenerator
             }
 
             /**
-             * @param non-empty-string \$id
+             * Update the given {$model} with new data.
+             *
+             * @param {$model} \$model
              * @param array \$data
              * @return {$model}
              */
-            public function update(string \$id, array \$data): {$model}
+            public function update({$model} \$model, array \$data): {$model}
             {
-                return \$this->repository->update(\$id, \$data);
+                return \$this->repository->update(\$model, \$data);
             }
 
             /**
-             * @param non-empty-string \$id
+             * Delete the given {$model} record.
+             *
+             * @param {$model} \$model
              * @return bool|int|null
              */
-            public function delete(string \$id): bool|int|null
+            public function delete({$model} \$model): bool|int|null
             {
-                return \$this->repository->delete(\$id);
+                return \$this->repository->delete(\$model);
             }
         }
         PHP;

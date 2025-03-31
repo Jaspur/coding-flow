@@ -111,7 +111,7 @@ CodingFlow ondersteunt automatisch:
 Voer deze checks handmatig uit:
 
 ```sh
-./prerelease.sh
+./pre-release.sh
 ```
 
 ---
