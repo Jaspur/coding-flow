@@ -33,8 +33,8 @@ class ServiceLayerGenerator
 
         namespace App\Services;
 
-        use App\Repositories\{$model}Repository;
-        use App\Models\{$model};
+        use App\Repositories\\{$model}Repository;
+        use App\Models\\{$model};
         use Illuminate\Database\Eloquent\Collection;
 
         class {$model}Service

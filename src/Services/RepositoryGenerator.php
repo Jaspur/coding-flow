@@ -33,7 +33,7 @@ class RepositoryGenerator
 
         namespace App\Repositories;
 
-        use App\Models\{$model};
+        use App\Models\\{$model};
         use Illuminate\Database\Eloquent\Collection;
 
         class {$model}Repository

@@ -33,11 +33,11 @@ class ControllerGenerator
 
         namespace App\Http\Controllers;
 
-        use App\Services\{$model}Service;
-        use App\Http\Requests\{$model}StoreRequest;
-        use App\Http\Requests\{$model}UpdateRequest;
-        use App\Http\Resources\{$model}Resource;
-        use App\Models\{$model};
+        use App\Services\\{$model}Service;
+        use App\Http\Requests\\{$model}StoreRequest;
+        use App\Http\Requests\\{$model}UpdateRequest;
+        use App\Http\Resources\\{$model}Resource;
+        use App\Models\\{$model};
         use Illuminate\Http\Response;
         use Illuminate\Http\Resources\Json\AnonymousResourceCollection as {$model}Collection;
 
