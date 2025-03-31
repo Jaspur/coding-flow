@@ -18,8 +18,9 @@ class GenerateObservers extends Command
     {
         $models = (new ModelFinderService)->getModels();
         foreach ($models as $model) {
-            (new ObserverGenerator)->generate($model);
-            $this->info("Observer gegenereerd: {$model}Observer.php");
+            if ((new ObserverGenerator)->generate($model)) {
+                $this->info("Observer gegenereerd: {$model}Observer.php");
+            }
         }
     }
 }

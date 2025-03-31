@@ -8,18 +8,19 @@ use Illuminate\Support\Facades\File;
 
 class APIResourceGenerator
 {
-    public function generate(string $model): void
+    public function generate(string $model): bool|int
     {
         $resourcePath = app_path("Http/Resources/{$model}Resource.php");
 
         File::ensureDirectoryExists(dirname($resourcePath));
 
         if (File::exists($resourcePath)) {
-            return;
+            return false;
         }
 
         $stub = $this->getStub($model);
-        File::put($resourcePath, $stub);
+
+        return File::put($resourcePath, $stub);
     }
 
     private function getStub(string $model): string

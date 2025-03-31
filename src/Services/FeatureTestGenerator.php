@@ -9,18 +9,19 @@ use Illuminate\Support\Str;
 
 class FeatureTestGenerator
 {
-    public function generate(string $model): void
+    public function generate(string $model): bool|int
     {
         $testPath = base_path("tests/Feature/{$model}Test.php");
 
         File::ensureDirectoryExists(dirname($testPath));
 
         if (File::exists($testPath)) {
-            return;
+            return false;
         }
 
         $stub = $this->getStub($model);
-        File::put($testPath, $stub);
+
+        return File::put($testPath, $stub);
     }
 
     private function getStub(string $model): string

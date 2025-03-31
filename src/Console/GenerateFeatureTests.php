@@ -18,8 +18,9 @@ class GenerateFeatureTests extends Command
     {
         $models = (new ModelFinderService)->getModels();
         foreach ($models as $model) {
-            (new FeatureTestGenerator)->generate($model);
-            $this->info("Feature Test gegenereerd: {$model}Test.php");
+            if ((new FeatureTestGenerator)->generate($model)) {
+                $this->info("Feature Test gegenereerd: {$model}Test.php");
+            }
         }
     }
 }

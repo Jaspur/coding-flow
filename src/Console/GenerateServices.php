@@ -18,8 +18,9 @@ class GenerateServices extends Command
     {
         $models = (new ModelFinderService)->getModels();
         foreach ($models as $model) {
-            (new ServiceLayerGenerator)->generate($model);
-            $this->info("Service gegenereerd: {$model}Service.php");
+            if ((new ServiceLayerGenerator)->generate($model)) {
+                $this->info("Service gegenereerd: {$model}Service.php");
+            }
         }
     }
 }

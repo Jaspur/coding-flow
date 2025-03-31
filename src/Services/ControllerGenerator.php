@@ -9,12 +9,12 @@ use Illuminate\Support\Str;
 
 class ControllerGenerator
 {
-    public function generate(string $model): void
+    public function generate(string $model): bool|int
     {
         $controllerPath = app_path("Http/Controllers/{$model}Controller.php");
 
         if (! config('codingflow.generators.controllers', true)) {
-            return;
+            return false;
         }
 
         // if (File::exists($controllerPath) && ! config('codingflow.overwrite_existing_files', false)) {
@@ -25,12 +25,13 @@ class ControllerGenerator
             $content = File::get($controllerPath);
             $modelVar = Str::lower($model);
             if (! Str::contains($content, 'all();')) {
-                return;
+                return false;
             }
         }
 
         File::ensureDirectoryExists(dirname($controllerPath));
-        File::put($controllerPath, $this->getStub($model));
+
+        return File::put($controllerPath, $this->getStub($model));
     }
 
     private function getStub(string $model): string

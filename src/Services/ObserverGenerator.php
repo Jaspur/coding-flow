@@ -8,18 +8,19 @@ use Illuminate\Support\Facades\File;
 
 class ObserverGenerator
 {
-    public function generate(string $model): void
+    public function generate(string $model): bool|int
     {
         $observerPath = app_path("Observers/{$model}Observer.php");
 
         File::ensureDirectoryExists(dirname($observerPath));
 
         if (File::exists($observerPath)) {
-            return;
+            return false;
         }
 
         $stub = $this->getStub($model);
-        File::put($observerPath, $stub);
+
+        return File::put($observerPath, $stub);
     }
 
     private function getStub(string $model): string

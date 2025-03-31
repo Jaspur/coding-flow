@@ -8,20 +8,21 @@ use Illuminate\Support\Facades\File;
 
 class RepositoryGenerator
 {
-    public function generate(string $model): void
+    public function generate(string $model): bool|int
     {
         $repositoryPath = app_path("Repositories/{$model}Repository.php");
 
         if (! config('codingflow.generators.repositories', true)) {
-            return;
+            return false;
         }
 
         if (File::exists($repositoryPath) && ! config('codingflow.overwrite_existing_files', false)) {
-            return;
+            return false;
         }
 
         File::ensureDirectoryExists(dirname($repositoryPath));
-        File::put($repositoryPath, $this->getStub($model));
+
+        return File::put($repositoryPath, $this->getStub($model));
     }
 
     private function getStub(string $model): string

@@ -8,20 +8,21 @@ use Illuminate\Support\Facades\File;
 
 class ServiceLayerGenerator
 {
-    public function generate(string $model): void
+    public function generate(string $model): bool|int
     {
         $servicePath = app_path("Services/{$model}Service.php");
 
         if (! config('codingflow.generators.services', true)) {
-            return;
+            return false;
         }
 
         if (File::exists($servicePath) && ! config('codingflow.overwrite_existing_files', false)) {
-            return;
+            return false;
         }
 
         File::ensureDirectoryExists(dirname($servicePath));
-        File::put($servicePath, $this->getStub($model));
+
+        return File::put($servicePath, $this->getStub($model));
     }
 
     private function getStub(string $model): string

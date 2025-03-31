@@ -19,8 +19,9 @@ class GenerateAPIResources extends Command
         $models = (new ModelFinderService)->getModels();
 
         foreach ($models as $model) {
-            (new APIResourceGenerator)->generate($model);
-            $this->info("API Resource gegenereerd: {$model}Resource.php");
+            if ((new APIResourceGenerator)->generate($model)) {
+                $this->info("API Resource gegenereerd: {$model}Resource.php");
+            }
         }
     }
 }

@@ -19,8 +19,9 @@ class GenerateRepositories extends Command
         $models = (new ModelFinderService)->getModels();
 
         foreach ($models as $model) {
-            (new RepositoryGenerator)->generate($model);
-            $this->info("Repository gegenereerd: {$model}Repository.php");
+            if ((new RepositoryGenerator)->generate($model)) {
+                $this->info("Repository gegenereerd: {$model}Repository.php");
+            }
         }
     }
 }

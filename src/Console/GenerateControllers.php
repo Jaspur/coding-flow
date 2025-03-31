@@ -19,8 +19,9 @@ class GenerateControllers extends Command
         $models = (new ModelFinderService)->getModels();
 
         foreach ($models as $model) {
-            (new ControllerGenerator)->generate($model);
-            $this->info("✅ Controller gegenereerd: {$model}Controller.php");
+            if ((new ControllerGenerator)->generate($model)) {
+                $this->info("✅ Controller gegenereerd: {$model}Controller.php");
+            }
         }
     }
 }
