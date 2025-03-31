@@ -23,7 +23,7 @@ class ControllerGenerator
 
         if (File::exists($controllerPath)) {
             $content = File::get($controllerPath);
-            $modelVar = strtolower($model);
+            $modelVar = Str::lower($model);
             if (! Str::contains($content, "\${$modelVar}s = \$model::all();")) {
                 return;
             }
