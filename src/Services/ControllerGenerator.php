@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Jaspur\CodingFlow\Services;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class ControllerGenerator
 {
@@ -16,8 +17,16 @@ class ControllerGenerator
             return;
         }
 
-        if (File::exists($controllerPath) && ! config('codingflow.overwrite_existing_files', false)) {
-            return;
+        // if (File::exists($controllerPath) && ! config('codingflow.overwrite_existing_files', false)) {
+        //     return;
+        // }
+
+        if (File::exists($controllerPath)) {
+            $content = File::get($controllerPath);
+            $modelVar = strtolower($model);
+            if (! Str::contains($content, "\${$modelVar}s = \$model::all();")) {
+                return;
+            }
         }
 
         File::ensureDirectoryExists(dirname($controllerPath));
