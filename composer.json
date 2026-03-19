@@ -34,7 +34,7 @@
         "laravel-shift/blueprint": "^2.11",
         "laravel/helpers": "v1.7.2",
         "laravel/pint": "^1.21",
-        "pestphp/pest": "^3.7",
+        "pestphp/pest": "^3.7|^4.0",
         "php": "^8.4",
         "phpstan/phpstan": "^2.1",
         "rector/rector": "^2.0",
